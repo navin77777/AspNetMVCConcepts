@@ -39,6 +39,8 @@ namespace Testwebdev.Models
         public string CreatedBy { get; set; }
         public DateTime? UpdatedDateTime { get; set; }
         public string UpdatedBy { get; set; }
+
+        public string DisplayName { get; set; }
     }
 
 }

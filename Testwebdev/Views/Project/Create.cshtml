@@ -1,0 +1,173 @@
+﻿@model Testwebdev.Models.Project
+
+@{
+    ViewBag.Title = "Create Project";
+}
+
+<h2 style="display:flex; align-items:center; justify-content:center">Add Project</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <div class="alert alert-success">
+        @ViewBag.Message
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProjectName, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.ProjectName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProjectName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.DomainName, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.DomainName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DomainName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.APIDetailsAll, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.APIDetailsAll, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.APIDetailsAll, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProjectType, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.ProjectType, ViewBag.ActiveProjectTypes as SelectList, "Select a Project Type", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProjectType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+   
+
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ApplicationOwnerId, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("SelectedApplicationOwnerId", ViewBag.ApplicationOwners as SelectList, "Select an Application Owner", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ApplicationOwnerId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductionServerIp, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.ProductionServerIp, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductionServerIp, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductionDatabaseIp, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.ProductionDatabaseIp, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductionDatabaseIp, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductionDatabaseDomain, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.ProductionDatabaseDomain, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductionDatabaseDomain, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.UATServerIp, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.UATServerIp, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UATServerIp, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.UARDomainName, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.UARDomainName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UARDomainName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.UATDatabaseIp, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.UATDatabaseIp, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UATDatabaseIp, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.UATDatabaseDomain, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.UATDatabaseDomain, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UATDatabaseDomain, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ExternalAPIName, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.ExternalAPIName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ExternalAPIName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ExternalAPIEndpoint, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.ExternalAPIEndpoint, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ExternalAPIEndpoint, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProjectDescription, htmlAttributes: new { @class = "control-label" })
+                @Html.TextAreaFor(model => model.ProjectDescription, new { @class = "form-control", rows = 4 })
+                @Html.ValidationMessageFor(model => model.ProjectDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+
+   
+
+
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary">Create Project</button>
+        </div>
+    </div>
+</div>
+}
