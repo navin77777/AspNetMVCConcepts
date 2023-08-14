@@ -1,0 +1,68 @@
+﻿@model Testwebdev.Models.ProjectOwnerMapping
+@using System.Web.Mvc
+
+@{
+    ViewBag.Title = "Edit Project Owner Mapping";
+}
+
+<h2 style="display:flex; align-items:center; justify-content:center">Edit Project Owner Mapping</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+<style>
+    .row {
+        padding: 7px;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProjectId, htmlAttributes: new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model.ProjectId, ViewBag.Projects as SelectList, "Select a Project", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ProjectId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ApplicationOwnerId, htmlAttributes: new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model.ApplicationOwnerId, ViewBag.ApplicationOwners as SelectList, "Select an Application Owner", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ApplicationOwnerId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary">Update Mapping</button>
+            </div>
+        </div>
+    </div>
+}

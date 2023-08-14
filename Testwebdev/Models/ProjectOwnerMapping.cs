@@ -29,6 +29,9 @@ namespace Testwebdev.Models
 
         [Display(Name = "Deleted")]
         public bool IsDeleted { get; set; }
+        public string ProjectName { get; set; }
+        public string ApplicationOwnerName { get; set; }
+
 
         public DateTime CreatedDateTime { get; set; }
         public string CreatedBy { get; set; }
